@@ -8,25 +8,27 @@
 import SwiftUI
 
 struct StartButtonView: View {
-    var body: some View {
-      Button {
+  @AppStorage("isOnboarding") var isOnboarding: Bool?
+  
+  var body: some View {
+    Button {
+      isOnboarding = false
+    } label: {
+      HStack(spacing: 8) {
+        Text("Start")
         
-      } label: {
-        HStack(spacing: 8) {
-          Text("Start")
-          
-          Image(systemName: "arrow.right.circle")
-            .imageScale(.large)
-        }
+        Image(systemName: "arrow.right.circle")
+          .imageScale(.large)
       }
-      .tint(.white)
-      .buttonBorderShape(.capsule)
-      .buttonStyle(.bordered)
-      
     }
+    .tint(.white)
+    .buttonBorderShape(.capsule)
+    .buttonStyle(.bordered)
+    
+  }
 }
 
 #Preview {
-    StartButtonView()
+  StartButtonView()
     .previewLayout(.sizeThatFits)
 }
